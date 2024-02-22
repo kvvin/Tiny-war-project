@@ -1,5 +1,5 @@
-- The scripts folder has multiple scripts.
-- "BlueUnit" and "RedUnit" scripts take the properties from the parent class "Unit" and deals with the movement and other necessary functions.
-- The movement is done using the AiPath script taken from the A* pathfinder project.
-- There is also a script called "UnitMovementTest" which is a script that I tried making from scratch to use instead of the AiPath but as it was not optimised and had multiple bugs I decided not to use it.
-- The project has a few bugs such as when multiple targets are spawned the Units that already have a target set do not reset when the target are destroyed hence they stay in place and keep attacking.
+- The scripts folder contains multiple scripts.
+- "BlueUnit" and "RedUnit" scripts inherit properties from the parent class "Unit" and handle movement and other necessary functions.
+- Movement is facilitated using the AiPath script obtained from the A* pathfinder project.
+- Additionally, there exists a script called "UnitMovementTest," which I attempted to create from scratch as an alternative to AiPath. However, due to optimization issues and multiple bugs, I opted not to use it.
+- Despite its functionality, the project suffers from several bugs, such as failing to reset the target of Units that already have a target set when the targets are destroyed, causing them to remain stationary and continue attacking.
