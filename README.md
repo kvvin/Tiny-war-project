@@ -2,4 +2,7 @@
 - "BlueUnit" and "RedUnit" scripts inherit properties from the parent class "Unit" and handle movement and other necessary functions.
 - Movement is facilitated using the AiPath script obtained from the A* pathfinder project.
 - Additionally, there exists a script called "UnitMovementTest," which I attempted to create from scratch as an alternative to AiPath. However, due to optimization issues and multiple bugs, I opted not to use it.
-- Despite its functionality, the project suffers from several bugs, such as failing to reset the target of Units that already have a target set when the targets are destroyed, causing them to remain stationary and continue attacking.
+- The units can now set new targets when the first target is destroyed.
+- Added an event panel showing in-game events which can be scrolled through by dragging the cursor on the panel screen.
+- The units might get stuck behind other units of same team as local avoidance is not implemented since free version of A* pathfinding project is used.
+- Plugin link : https://arongranberg.com/astar/
