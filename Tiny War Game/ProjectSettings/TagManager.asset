@@ -8,6 +8,14 @@ TagManager:
   - RedUnit
   - RedSword
   - BlueSword
+  - blueUsername
+  - blueText
+  - blueTime
+  - redUsername
+  - redText
+  - redTime
+  - events
+  - text
   layers:
   - Default
   - TransparentFX

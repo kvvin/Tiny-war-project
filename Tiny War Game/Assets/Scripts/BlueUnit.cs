@@ -6,6 +6,7 @@ using System.Collections;
 public class BlueUnit : Unit
 {
     private AIPath aiPath; 
+
     private Transform target;
     private bool delayComplete = false;
 
@@ -35,38 +36,54 @@ public class BlueUnit : Unit
 
         if (target != null)
         {
-            aiPath.destination = target.position; 
+            aiPath.destination = target.position;
         }
 
-        
         if (aiPath.reachedEndOfPath)
-        {
-            
+        {   
             animator.SetBool("IsAttack", true);
-
-            
             aiPath.isStopped = true;
-        }
 
+        }
         animator.SetBool("IsMoving", aiPath.velocity.magnitude > 0);
+
         if (target == null)
         {
             SetNewTarget();
         }
-    }
 
+    }
 
     private void SetNewTarget()
     {
-        GameObject[] redUnits = GameObject.FindGameObjectsWithTag("RedUnit");
-        foreach (GameObject redUnit in redUnits)
-        {
-            if (redUnit != null)
+
+        if (target != null && target.gameObject.activeInHierarchy)
             {
-                target = redUnit.transform;
+                return;
+            }   
+
+        GameObject[] enemyUnits;
+        enemyUnits = GameObject.FindGameObjectsWithTag("RedUnit");
+
+        foreach (GameObject enemyUnit in enemyUnits)
+        {
+            if (enemyUnit != null && enemyUnit.activeInHierarchy)
+            {
+                target = enemyUnit.transform;
+
+                
+                if (aiPath != null)
+                {
+                    aiPath.destination = target.position;
+                    aiPath.isStopped = false; 
+                    animator.SetBool("IsAttack", false);
+                    animator.SetBool("IsMoving", true);
+                }
+
                 return;
             }
         }
+            target = null;
     }
 
 
@@ -80,7 +97,7 @@ public class BlueUnit : Unit
             if (damagingUnit != null)
             {
                 
-                TakeDamage(damagingUnit.damage);
+                TakeDamage(damagingUnit.damage, damagingUnit.gameObject);;
                 
                 //Debug.Log("Blue unit took damage! Current health: " + health);
             }

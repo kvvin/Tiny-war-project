@@ -824,7 +824,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eb4ca3df11e0f274ba6ee0f262e5bfd3, type: 2}
+  - {fileID: 2100000, guid: e64d52dd56c99a644882bf71b37e9d0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1669,6 +1669,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 0
   damage: 10
+  eventsPanelManager: {fileID: 0}
 --- !u!114 &5541513119549559712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1686,13 +1687,13 @@ MonoBehaviour:
   detailedGizmos: 0
   startEndModifier:
     addPoints: 0
-    exactStartPoint: 3
+    exactStartPoint: 1
     exactEndPoint: 3
-    useRaycasting: 0
+    useRaycasting: 1
     mask:
       serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
+      m_Bits: 0
+    useGraphRaycasting: 1
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
@@ -1726,15 +1727,15 @@ MonoBehaviour:
   autoRepath:
     mode: 2
     interval: 0.5
-    sensitivity: 17.8
-    maximumInterval: 0.88
+    sensitivity: 20
+    maximumInterval: 0.09
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 1
-  pickNextWaypointDist: 2
-  endReachedDistance: 1.69
+  slowdownDistance: 1.06
+  pickNextWaypointDist: 0.64
+  endReachedDistance: 1.25
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -1764,7 +1765,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7477978738133416978}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
   m_Name: 

@@ -10,6 +10,7 @@ public class Unit : MonoBehaviour
     protected Animator animator;
     protected Slider healthSlider;
     protected Text healthText;
+    public EventsPanelManager eventsPanelManager;
     
 
     protected virtual void Start()
@@ -25,9 +26,10 @@ public class Unit : MonoBehaviour
             
         }
         UpdateHealthText();
+        eventsPanelManager = FindObjectOfType<EventsPanelManager>();
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount, GameObject damagingUnit)
     {
         health -= amount;
         if (animator != null)
@@ -39,7 +41,8 @@ public class Unit : MonoBehaviour
         }
         if (health == 0)
         {
-            Die();
+            health = 0;
+            Die(damagingUnit);
         }
 
         if (healthSlider != null)
@@ -49,7 +52,7 @@ public class Unit : MonoBehaviour
         UpdateHealthText();
     }
 
-    protected virtual void Die()
+    protected virtual void Die(GameObject damagingUnit)
     {
         
         if (animator != null)
@@ -58,6 +61,19 @@ public class Unit : MonoBehaviour
         }
 
         StartCoroutine(DestroyAfterAnimation());
+        if (eventsPanelManager != null)
+        {
+            if (gameObject.name.StartsWith("BlueUnit_"))
+            {
+                eventsPanelManager.SpawnBlueBubble(damagingUnit.name, "killed " + gameObject.name);
+                eventsPanelManager.UpdateScore("Red", 10);
+            }
+            else if (gameObject.name.StartsWith("RedUnit_"))
+            {
+                eventsPanelManager.SpawnRedBubble(damagingUnit.name, "killed " + gameObject.name);
+                eventsPanelManager.UpdateScore("Blue", 10); 
+            }
+        }
     }
 
     protected IEnumerator DestroyAfterAnimation()
